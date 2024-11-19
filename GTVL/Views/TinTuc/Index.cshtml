@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Clone_.cshtml";
+}
+
+<a href="#" class="scroll-up">
+    <i class="bi bi-chevron-up"></i>
+</a>
+<div class="page-news">
+    <div class="container">
+        <div class="page-news--list">
+            <div class="page-news--infor">
+                <section class="content-padding--news">
+                    <div class="block-title view-more">
+                        <h3 class="title">Tin tức nổi bật</h3>
+                    </div>
+
+
+                    <div class="page-news--slick slick-initialized slick-slider">
+                       
+                        @foreach (var item in ViewBag.tintucnoibat)
+                        {
+                            <a href="#" class="hot-item">
+                                <div class="hot-image">
+                                    <img src="@("https://vieclambinhduong.vn/Content/Upload/News_Img/" + item.ImagePath)" alt="">
+                                </div>
+                                <div class="hot-item--info">
+                                    <p class="hot-title">@item.Title</p>
+                                    <div class="hot-desc">
+                                        @item.Summary
+                                    </div>
+                                </div>
+
+                                <div class="hot-author">
+                                    <div class="item-image">
+                                        <img src="~/Template/images/news/user.svg" alt="">
+                                    </div>
+                                    <div class="item-author">
+                                        <div class="name">
+                                            Superadmin
+                                        </div>
+                                        <div class="date">
+                                            @item.NgayTao
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }                     
+                    </div>
+
+                </section>
+                <section class="content-padding--news">
+                    <div class="block-title view-more">
+                        <h3 class="title">Tin tức video</h3>
+                    </div>
+                    <div class="block-video">
+                        <div class="item-news">
+                            @foreach (var item in ViewBag.bangtinthongtin1)
+                            {
+                            <a href="#" class="post-thumbs">
+                                <div class="post-image">
+                                    <img src="@("https://vieclambinhduong.vn/Content/NhutCC/img/" + item.ImagePath)" alt="">
+                                </div>
+                                <div class="layer">
+                                    <span class="post-category">Tin tức chung</span>
+                                    <h4 class="title">@item.Title</h4>
+                                    <div class="advise-block">
+                                        <div class="view-date">
+                                            <i class="bi bi-calendar-minus"></i>
+                                            <span>@item.NgayTao</span>
+                                        </div>
+                                        <div class="view-date">
+                                            <i class="bi bi-eye"></i>
+                                            <span>113</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>}
+                        </div>
+                        <div class="item-news__list">
+                            @foreach (var item in ViewBag.tintucvideo3)
+                            {
+                            <a href="#" class="post-item">
+                                <div class="post-item--img">
+                                    <img src="@("https://vieclambinhduong.vn/Content/NhutCC/img/" + item.ImagePath)" alt="">
+                                </div>
+
+                                <div class="post-item--content">
+                                    <span class="post-category">Tin tức chung</span>
+                                    <h5 class="title">@item.Title</h5>
+                                    <div class="advise-block">
+                                        <div class="view-date">
+                                            <i class="bi bi-calendar-minus"></i>
+                                            <span>@item.NgayTao</span>
+                                        </div>
+                                        <div class="view-date">
+                                            <i class="bi bi-eye"></i>
+                                            <span>113</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            }
+                        </div>
+                    </div>
+                </section>
+                <section class="content-padding--news">
+                    <div class="block-title view-more">
+                        <h3 class="title">Cẩm nang việc làm</h3>
+                    </div>
+                    <div class="tick-list">
+                        @foreach (var item in ViewBag.camnangvieclam)
+                        {
+
+
+                        <a href="#" class="hot-item">
+                            <div class="hot-image">
+                                <img src="@("https://vieclambinhduong.vn/Content/Upload/News_Img/" + item.ImagePath)" alt="">
+                            </div>
+                            <div class="hot-item--info">
+                                <p class="hot-title">@item.Title</p>
+                                <div class="hot-desc">
+                                    @item.Summary
+                                </div>
+                            </div>
+
+                            <div class="hot-author">
+                                <div class="item-image">
+                                    <img src="#" alt="">
+                                </div>
+                                <div class="item-author">
+                                    <div class="name">
+                                        Superadmin
+                                    </div>
+                                    <div class="date">
+                                        @item.NgayTao
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        }
+
+                    </div>
+                </section>
+
+            </div>
+            <div class="page-news--category">
+                <form action="#">
+                    <div class="search">
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="Nhập tìm kiếm vào đây">
+                        </div>
+                        <div class="search-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                    </div>
+                </form>
+                <aside class="popular-category">
+                    <div class="block-entry">
+                        <div class="title">
+                            Danh mục
+                        </div>
+                        <div class="icon">
+                            <i class="bi bi-arrow-bar-right"></i>&gt;
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-chevron-right"></i>
+                                <span>Tin tức chung</span>
+                                <div class="count">(1212)</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-chevron-right"></i>
+                                <span>Tin tức chung</span>
+                                <div class="count">(1212)</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-chevron-right"></i>
+                                <span>Tin tức chung</span>
+                                <div class="count">(1212)</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-chevron-right"></i>
+                                <span>Tin tức chung</span>
+                                <div class="count">(1212)</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-chevron-right"></i>
+                                <span>Tuyển dụng theo nghị định tháng 06 - 2023</span>
+                                <div class="count">(1212)</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </aside>
+                <aside class="popular-news">
+                    <div class="block-entry">
+                        <div class="title">
+                            Tin tức nổi bật
+                        </div>
+                        <div class="icon">
+                            <i class="bi bi-arrow-bar-right"></i>&gt;
+                        </div>
+                    </div>
+                    @foreach (var item in ViewBag.tintucnoibat)
+                    {
+                        <a href="#" class="side-item">
+                            <div class="image">
+                                <img src="@("https://vieclambinhduong.vn/Content/Upload/News_Img/" + item.ImagePath)" alt="">
+                            </div>
+                            <div class="text">
+                                <h4 class="title-post">
+                                    @item.Title
+                                </h4>
+                                <div class="advise-block">
+                                    <div class="view-date">
+                                        <i class="bi bi-calendar-minus"></i>
+                                        <span>@item.NgayTao</span>
+                                    </div>
+                                    <div class="view-date">
+                                        <i class="bi bi-eye"></i>
+                                        <span>@item.Luotxem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                   
+                    
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+

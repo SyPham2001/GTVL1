@@ -1,0 +1,365 @@
+﻿
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Lib_GTVL.CustomModel.CustomHoSoUngVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Header_.cshtml";
+}
+
+<a href="#" class="scroll-up">
+    <i class="bi bi-chevron-up"></i>
+</a>
+
+<div class="people resume">
+    <div class="container-small">
+        <div class="detail-list">
+            <div class="detail-content detail-item">
+                <div class="detail-title">
+                    <p>Tìm thấy <strong>1533</strong> việc làm mới nhất 2024</p>
+                    <div class="detail-blockSelect">
+                        <strong>Sắp xếp theo :</strong>
+                        <div class="detail-select">
+                            <div class="detail-option active" data-id="#level">Trình độ</div>
+                            <div class="detail-option " data-id="#experience">Nhiều kinh nghiệm</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body active" id="level">
+                    @foreach (var item in ViewBag.hosoungvien)
+                    {
+                        <div class="resume-item" data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
+                             data-trinh-do="@item.TrinhDoChuyenMon_ID">
+                            <a href="#" class="card">
+                                <div class="bg-layer">
+                                    <i class="bi bi-eye"></i>
+                                    <span>Xem chi tiết</span>
+                                </div>
+                                <div class="card-left card-content">
+                                    <div class="card-img">
+                                        @if (string.IsNullOrEmpty(item.Hinh))
+                                        {
+                                            if (item.GioiTinh == 1) // Nam
+                                            {
+                                                <img src="~/Template/images/AvataNam.jpg" alt="" />
+                                            }
+                                            else if (item.GioiTinh == 2) // Nữ
+                                            {
+                                                <img src="~/Template/images/AvataNu.jpg" alt="" />
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (item.GioiTinh == 1) // Nam
+                                            {
+                                                <img src="~/Template/images/AvataNam.jpg" alt="" />
+                                            }
+                                            else if (item.GioiTinh == 2) // Nữ
+                                            {
+                                                <img src="~/Template/images/AvataNu.jpg" alt="" />
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="card-right card-content">
+                                    <div class="card-content--title">
+                                        <i class="bi bi-cursor"></i>
+                                        <span>@item.TenHoSo</span>
+                                    </div>
+                                    <div class="card-content--name">
+                                        <div class="flex name">
+                                            @if (item.GioiTinh == 1)
+                                            {
+                                                <i class="bi bi-gender-male"></i>
+                                            }
+                                            @if (item.GioiTinh == 2)
+                                            {
+                                                <i class="bi bi-gender-female"></i>
+                                            }
+                                            <span>@item.HoTen</span>
+                                        </div>
+                                        <div class="flex born">
+                                            <i class="bi bi-calendar-event"></i>
+                                            <span>@item.NamSinh</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-item--list">
+                                        <div class="box-content">
+                                            <div class="box-content--item">
+                                                <i class="bi bi-mortarboard"></i>
+                                                <span> @(String.IsNullOrEmpty(@item.TenChuyenMon) ? "Chưa qua đào tạo" : @item.TenChuyenMon)</span>
+                                            </div>
+                                            <div class="box-content--item">
+                                                <i class="bi bi-briefcase"></i>
+                                                <span>@(String.IsNullOrEmpty(@item.KhoangThoiGian) ? "Không Yêu Cầu" : @item.KhoangThoiGian)</span>
+                                            </div>
+                                        </div>
+                                        <div class="box-content">
+                                            <div class="box-content--item">
+                                                <i class="bi bi-coin"></i>
+                                                <span>@item.MucLuong</span>
+                                            </div>
+                                            <div class="box-content--item">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                                <span>@item.NgayCapNhat</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                 
+                </div>
+                <div class="card-body" id="experience">
+
+                    @foreach (var item in ViewBag.hosoungvien)
+                    {
+                        if (item.KhoangThoiGian != null && item.KhoangThoiGian != "Không yêu cầu")
+                        {
+                            <div  class="resume-item " data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
+                             data-trinh-do="@item.TrinhDoChuyenMon_ID" >
+                                <a href="#" class="card">
+                                    <div class="bg-layer">
+                                        <i class="bi bi-eye"></i>
+                                        <span>Xem chi tiết</span>
+                                    </div>
+                                    <div class="card-left card-content">
+                                        <div class="card-img">
+                                            @if (string.IsNullOrEmpty(item.Hinh))
+                                            {
+                                                if (item.GioiTinh == 1) // Nam
+                                                {
+                                                    <img src="~/Template/images/AvataNam.jpg" alt="" />
+                                                }
+                                                else if (item.GioiTinh == 2) // Nữ
+                                                {
+                                                    <img src="~/Template/images/AvataNu.jpg" alt="" />
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (item.GioiTinh == 1) // Nam
+                                                {
+                                                    <img src="~/Template/images/AvataNam.jpg" alt="" />
+                                                }
+                                                else if (item.GioiTinh == 2) // Nữ
+                                                {
+                                                    <img src="~/Template/images/AvataNu.jpg" alt="" />
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="card-right card-content">
+                                        <div class="card-content--title">
+                                            <i class="bi bi-cursor"></i>
+                                            <span>@item.TenHoSo</span>
+                                        </div>
+                                        <div class="card-content--name">
+                                            <div class="flex name">
+                                                @if (item.GioiTinh == 1)
+                                                {
+                                                    <i class="bi bi-gender-male"></i>
+                                                }
+                                                @if (item.GioiTinh == 2)
+                                                {
+                                                    <i class="bi bi-gender-female"></i>
+                                                }
+                                                <span>@item.HoTen</span>
+                                            </div>
+                                            <div class="flex born">
+                                                <i class="bi bi-calendar-event"></i>
+                                                <span>@item.NamSinh</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-item--list">
+                                            <div class="box-content">
+                                                <div class="box-content--item">
+                                                    <i class="bi bi-mortarboard"></i>
+                                                    <span> @(String.IsNullOrEmpty(@item.TenChuyenMon) ? "Chưa qua đào tạo" : @item.TenChuyenMon)</span>
+                                                </div>
+                                                <div class="box-content--item">
+                                                    <i class="bi bi-briefcase"></i>
+
+                                                    <span> @item.KhoangThoiGian</span>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="box-content">
+                                                <div class="box-content--item">
+                                                    <i class="bi bi-coin"></i>
+                                                    <span>@item.MucLuong</span>
+                                                </div>
+                                                <div class="box-content--item">
+                                                    <i class="bi bi-arrow-repeat"></i>
+                                                    <span>@item.NgayCapNhat </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+            <div class="detail-filter detail-item" id="blockFilterRight">
+                <div class="filter-header">
+                    <p>
+                        Bộ lọc nâng cao
+                    </p>
+                </div>
+                <div class="filter-inner">
+                    <div class="filter-item">
+                        <div class="filter-title accordion active">
+                            <p>
+                                Lọc theo mức lương
+                            </p>
+                            <i class="bi bi-chevron-double-down"></i>
+                        </div>
+                        <div class="filter-list active">
+                            <ul class="list-unstyled">
+                                @foreach (var item in ViewBag.mucluongtracuu)
+                                {
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   id="customRadioMucluong@(item.MucLuong_Id)"
+                                                   name="mucLuongIds"
+                                                   value="@item.MucLuong_Id"
+                                                   data-ml-1="@item.MucLuong_Id">
+                                            <label class="custom-control-label" for="customRadioMucluong@(item.MucLuong_Id)">
+                                                <span>@item.TenMucLuong</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <div class="filter-title accordion active">
+                            <p>
+                                Lọc theo kinh nghiệm
+                            </p>
+                            <i class="bi bi-chevron-double-down"></i>
+                        </div>
+                        <div class="filter-list active" id="">
+                            <ul class="list-unstyled">
+                                @foreach (var item in ViewBag.kinhnghiemtracuu)
+                                {
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   id="customRadioKinhNghiem@(item.KinhNghiem_ID)"
+                                                   name="kinhNghiemIds"
+                                                   value="@item.KinhNghiem_ID"
+                                                   data-ml-1="@item.KinhNghiem_ID">
+                                            <label class="custom-control-label" for="customRadioKinhNghiem@(item.KinhNghiem_ID)">
+                                                <span>@item.TenKinhNghiem</span>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <div class="filter-title accordion active">
+                            <p>
+                                Lọc theo trình độ
+                            </p>
+                            <i class="bi bi-chevron-double-down"></i>
+                        </div>
+                        <div class="filter-list active">
+                            <ul class="list-unstyled">
+                                @foreach (var item in ViewBag.trinhdotracuu)
+                                {
+
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   id="customRadioTrinhDo@(item.TrinhDoChuyenMon_ID)"
+                                                   name="trinhDoIds"
+                                                   value="@item.TrinhDoChuyenMon_ID"
+                                                   data-ml-1="@item.TrinhDoChuyenMon_ID">
+                                            <label class="custom-control-label" for="customRadioTrinhDo@(item.TrinhDoChuyenMon_ID)">
+                                                <span>@item.TenChuyenMon</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+    <script>
+        // Lấy tất cả các checkbox
+        const kinhNghiemCheckboxes = document.querySelectorAll('input[name="kinhNghiemIds"]');
+        const trinhDoCheckboxes = document.querySelectorAll('input[name="trinhDoIds"]');
+        const mucLuongCheckboxes = document.querySelectorAll('input[name="mucLuongIds"]');
+
+        // Lấy tất cả các hồ sơ
+        const resumeItems = document.querySelectorAll('.resume-item');
+
+        // Hàm kiểm tra điều kiện lọc
+        function checkResume(resumeItem, kinhNghiemIds, trinhDoIds, mucLuongIds) {
+            const kinhNghiem = parseInt(resumeItem.dataset.kinhNghiem);
+            const trinhDo = parseInt(resumeItem.dataset.trinhDo);
+            const mucLuong = parseInt(resumeItem.dataset.mucLuong);
+
+            return (kinhNghiemIds.length === 0 || kinhNghiemIds.includes(kinhNghiem)) &&
+                   (trinhDoIds.length === 0 || trinhDoIds.includes(trinhDo)) &&
+                   (mucLuongIds.length === 0 || mucLuongIds.includes(mucLuong));
+        }
+
+        // Hàm lọc hồ sơ
+        function filterResumes() {
+            const kinhNghiemIds = Array.from(kinhNghiemCheckboxes)
+              .filter(checkbox => checkbox.checked)
+              .map(checkbox => parseInt(checkbox.value));
+
+            const trinhDoIds = Array.from(trinhDoCheckboxes)
+              .filter(checkbox => checkbox.checked)
+              .map(checkbox => parseInt(checkbox.value));
+
+            const mucLuongIds = Array.from(mucLuongCheckboxes)
+              .filter(checkbox => checkbox.checked)
+              .map(checkbox => parseInt(checkbox.value));
+
+            resumeItems.forEach(resumeItem => {
+                if (checkResume(resumeItem, kinhNghiemIds, trinhDoIds, mucLuongIds)) {
+                    resumeItem.style.display = 'block';
+                } else {
+                    resumeItem.style.display = 'none';
+                }
+            });
+        }
+
+        // Gắn sự kiện "change" cho các checkbox
+        kinhNghiemCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
+        trinhDoCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
+        mucLuongCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
+    </script>
+
+
+
