@@ -18,7 +18,7 @@
         <div class="detail-list">
             <div class="detail-content detail-item">
                 <div class="detail-title">
-                    <p>Tìm thấy <strong>1533333</strong> việc làm mới nhất 2024</p>
+                    <p>Tìm thấy <strong>@Model.TotalItemCount</strong> việc làm mới nhất 2024</p>
                     <div class="detail-blockSelect">
                         <strong>Sắp xếp theo :</strong>
                         <div class="detail-select">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="card-body active" id="level">
-                    @foreach (var item in ViewBag.hosoungvien)
+                    @foreach (var item in Model)
                     {
                         <div class="resume-item" data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
                              data-trinh-do="@item.TrinhDoChuyenMon_ID">
@@ -113,13 +113,14 @@
                     }
                     
                         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    
                  
                 </div>
                 <div class="card-body" id="experience">
 
-                    @foreach (var item in ViewBag.hosoungvien)
+                    @foreach (var item in Model)
                     {
-                        if (item.KhoangThoiGian != null && item.KhoangThoiGian != "Không yêu cầu")
+                        if (item.KinhNghiem_ID != 5 && item.KinhNghiem_ID != 1)
                         {
                             <div  class="resume-item " data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
                              data-trinh-do="@item.TrinhDoChuyenMon_ID" >
@@ -205,10 +206,11 @@
                                 </a>
                             </div>
                         }
+                      
                     }
 
-
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                 
                 </div>
             </div>
             <div class="detail-filter detail-item" id="blockFilterRight">
@@ -313,6 +315,8 @@
 
 </div>
     <script>
+       
+
         // Lấy tất cả các checkbox
         const kinhNghiemCheckboxes = document.querySelectorAll('input[name="kinhNghiemIds"]');
         const trinhDoCheckboxes = document.querySelectorAll('input[name="trinhDoIds"]');
@@ -360,6 +364,48 @@
         trinhDoCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
         mucLuongCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
     </script>
+<style>
+    .pagination{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+    }
+     .pagination-container {
+        margin: 20px auto;
+    }
 
+    .pagination {
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        display: inline-block;
+    }
+
+    .pagination li a {
+        display: block;
+        padding: 5px 10px;
+        background-color: #f1f1f1; /* Màu nền */
+        color: #333; /* Màu chữ */
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .pagination li a:hover {
+        background-color: #ccc; /* Hiệu ứng hover */
+    }
+
+    .pagination .active a {
+        background-color: #4682B4;
+        color: white;
+    }
+
+    .PagedList-skipToNext a {
+        font-weight: bold;
+    }
+</style>
 
 
