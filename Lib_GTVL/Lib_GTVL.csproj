@@ -79,6 +79,7 @@
     <Compile Include="CustomModel\CustomTuVanQuangCao1.cs" />
     <Compile Include="CustomModel\CustomTuVanQuangCao.cs" />
     <Compile Include="CustomModel\CustomViecLamMoiNhat.cs" />
+    <Compile Include="CustomModel\DoanhNghiep_TuyenDung_SearchParameter.cs" />
     <Compile Include="DAO\BangTinThongTin1_Dao.cs" />
     <Compile Include="DAO\BangTinThongTin_Dao.cs" />
     <Compile Include="DAO\CamNangViecLam_Dao.cs" />

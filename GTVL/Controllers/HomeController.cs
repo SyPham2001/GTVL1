@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Lib_GTVL.DAO;
 using System.Data.Entity;
 using Lib_GTVL.EF;
+using Lib_GTVL.CustomModel;
 
 namespace GTVL.Controllers
 {
@@ -15,6 +16,7 @@ namespace GTVL.Controllers
         public Slide_TinTuc_Dao tintuc_8 = new Slide_TinTuc_Dao();
         public Slide_Tin_HotDao tinhot_4 = new Slide_Tin_HotDao();
         public Slides_Dao slidemain = new Slides_Dao();
+
         public ViecLamMoiNhat_Dao vieclammoi = new ViecLamMoiNhat_Dao();
         public HoSoUngVien_Dao hosoungvien = new HoSoUngVien_Dao();
         public QuangCaoTinTuc_Dao QuangCaoTinTuc = new QuangCaoTinTuc_Dao();
@@ -33,7 +35,7 @@ namespace GTVL.Controllers
         public CamNangViecLam_Dao CamNangViecLam = new CamNangViecLam_Dao();
         public TrinhDoTraCuu_Dao TrinhDoTraCuu = new TrinhDoTraCuu_Dao();
 
-        public  ActionResult Index(int?page)
+        public ActionResult Index(int? page)
         {
             int pageNumber = (page ?? 1);
             int pageSize = 10;
@@ -58,7 +60,7 @@ namespace GTVL.Controllers
             //loai hinh cong viec tra cuu
             var congviectracuu = CongViecTraCuu.ListAll();
             ViewBag.CongViecTraCuu = congviectracuu;
-            
+
 
             // kinh nghiem tra cuu
             var kinhnghiemtracuu = KinhNghiemTraCuu.ListAll();
@@ -101,8 +103,21 @@ namespace GTVL.Controllers
             var bangtinthongtin = BangTinThongTin.ListAll();
             ViewBag.BangTinThongTin = bangtinthongtin;
 
+
             //Viec Lam Moi 20
-            var vieclam_20 = vieclammoi.ListAll_20();
+            var searchParameter = new DoanhNghiep_TuyenDung_SearchParameter
+            {
+                TieuDeTuyenDung = "",
+                KhuVuc = "",
+                MucLuong = "",
+                TrinhDo = "",
+                NgoaiNgu = "",
+                TinHoc = "",
+                GioiTinh = "",
+                NganhNghe34 = "",
+                SelectTop = 50 // Giới hạn số lượng kết quả
+            };
+            var vieclam_20 = vieclammoi.ListAll_20(searchParameter, pageNumber);
             ViewBag.vieclammoi = vieclam_20;
 
             //Ho so ung vien

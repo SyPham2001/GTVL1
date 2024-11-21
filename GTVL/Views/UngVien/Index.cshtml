@@ -111,10 +111,10 @@
                             </a>
                         </div>
                     }
-                    
-                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                    
-                 
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+
                 </div>
                 <div class="card-body" id="experience">
 
@@ -122,8 +122,8 @@
                     {
                         if (item.KinhNghiem_ID != 5 && item.KinhNghiem_ID != 1)
                         {
-                            <div  class="resume-item " data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
-                             data-trinh-do="@item.TrinhDoChuyenMon_ID" >
+                            <div class="resume-item " data-muc-luong="@item.MucLuong_ID" data-kinh-nghiem="@item.KinhNghiem_ID"
+                                 data-trinh-do="@item.TrinhDoChuyenMon_ID">
                                 <a href="#" class="card">
                                     <div class="bg-layer">
                                         <i class="bi bi-eye"></i>
@@ -206,11 +206,11 @@
                                 </a>
                             </div>
                         }
-                      
+
                     }
 
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                 
+
                 </div>
             </div>
             <div class="detail-filter detail-item" id="blockFilterRight">
@@ -310,12 +310,12 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </div>
-    <script>
-       
+<script>
+
 
         // Lấy tất cả các checkbox
         const kinhNghiemCheckboxes = document.querySelectorAll('input[name="kinhNghiemIds"]');
@@ -363,15 +363,16 @@
         kinhNghiemCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
         trinhDoCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
         mucLuongCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterResumes));
-    </script>
+</script>
 <style>
-    .pagination{
+    .pagination {
         display: flex;
         justify-content: center;
         gap: 10px;
         align-items: center;
     }
-     .pagination-container {
+
+    .pagination-container {
         margin: 20px auto;
     }
 
@@ -380,32 +381,30 @@
         padding: 0;
     }
 
-    .pagination li {
-        display: inline-block;
-    }
+        .pagination li {
+            display: inline-block;
+        }
 
-    .pagination li a {
-        display: block;
-        padding: 5px 10px;
-        background-color: #f1f1f1; /* Màu nền */
-        color: #333; /* Màu chữ */
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
+            .pagination li a {
+                display: block;
+                padding: 5px 10px;
+                background-color: #f1f1f1; /* Màu nền */
+                color: #333; /* Màu chữ */
+                text-decoration: none;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+            }
 
-    .pagination li a:hover {
-        background-color: #ccc; /* Hiệu ứng hover */
-    }
+                .pagination li a:hover {
+                    background-color: #ccc; /* Hiệu ứng hover */
+                }
 
-    .pagination .active a {
-        background-color: #4682B4;
-        color: white;
-    }
+        .pagination .active a {
+            background-color: #4682B4;
+            color: white;
+        }
 
     .PagedList-skipToNext a {
         font-weight: bold;
     }
 </style>
-
-
